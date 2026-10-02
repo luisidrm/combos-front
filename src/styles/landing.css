@@ -1,0 +1,81 @@
+/* ---- Landing page (the front door at "/") ---------------------------------------------
+   Same tokens and primitives as the app: flat gray-green background with the soft accent wash,
+   glass cards, sentence-case Geist, no emoji. Sections are separated by space, not rules. */
+.fc-land { max-width: 1240px; margin: 0 auto; padding: 8px 16px 56px; display: grid; gap: 64px; }
+@media (min-width: 900px) { .fc-land { padding: 28px 24px 88px; gap: 96px; } }
+
+.fc-hero { display: grid; gap: 40px; padding-top: 12px; }
+.fc-hero__copy { display: grid; gap: 18px; justify-items: center; text-align: center; max-width: 820px; margin: 0 auto; }
+.fc-hero__eyebrow { font: 600 14px/20px var(--font-sans); color: var(--accent-text); }
+.fc-hero__title { margin: 0; font: 700 clamp(34px, 6.4vw, 58px)/1.05 var(--font-sans); letter-spacing: -0.035em; }
+.fc-hero__sub { margin: 0; max-width: 600px; font: 400 18px/28px var(--font-sans); color: var(--text-2); }
+.fc-hero__cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.fc-hero__copy .fc-shop__perks { justify-content: center; }
+.fc-hero__mosaic { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 920px; width: 100%; margin: 0 auto; }
+@media (min-width: 700px) { .fc-hero__mosaic { grid-template-columns: repeat(var(--n, 4), 1fr); gap: 16px; max-width: calc(var(--n, 4) * 230px); } }
+.fc-hero__tile { position: relative; aspect-ratio: 1 / 1; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow-md); background: var(--fill-1); }
+.fc-hero__tile:nth-child(even) { transform: translateY(22px); }
+.fc-hero__badge { position: absolute; left: 10px; bottom: 10px; right: 10px; }
+
+.fc-land__head { display: grid; gap: 8px; margin: 0 auto 28px; max-width: 640px; text-align: center; }
+.fc-land__title { margin: 0; font: 700 clamp(26px, 4.4vw, 36px)/1.12 var(--font-sans); letter-spacing: -0.03em; }
+.fc-land__lead { margin: 0; font: 400 17px/26px var(--font-sans); color: var(--text-2); }
+
+.fc-land__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.fc-land__card { display: grid; gap: 10px; align-content: start; }
+.fc-land__card h3 { margin: 0; font: 600 18px/24px var(--font-sans); letter-spacing: -0.015em; }
+.fc-land__card p { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--text-2); }
+.fc-land__icon { width: 44px; height: 44px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; background: var(--accent-soft); color: var(--accent-text); }
+
+.fc-land__cats { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px; }
+.fc-land__more { margin-top: 24px; display: flex; justify-content: center; }
+
+.fc-zonechips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.fc-zonechip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--surface-card); border: 1px solid var(--border-1); font: 500 14px/20px var(--font-sans); }
+.fc-zonechip__fee { color: var(--text-3); font-weight: 400; }
+
+.fc-land__split { display: grid; gap: 16px; align-items: start; }
+@media (min-width: 900px) { .fc-land__split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.fc-hours { display: grid; }
+.fc-hours__row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; font: 400 15px/22px var(--font-sans); }
+.fc-hours__row + .fc-hours__row { border-top: 1px solid var(--separator); }
+.fc-hours__row span:last-child { color: var(--text-2); }
+.fc-hours__row[data-closed="true"] span:last-child { color: var(--text-3); }
+.fc-contact { display: grid; gap: 12px; }
+.fc-contact a, .fc-contact div { display: inline-flex; align-items: center; gap: 10px; font: 500 15px/22px var(--font-sans); }
+.fc-contact svg { flex: none; color: var(--accent-text); }
+
+.fc-faq { display: grid; gap: 10px; max-width: 820px; margin: 0 auto; }
+.fc-faq__item { background: var(--surface-card); border: 1px solid var(--border-1); border-radius: 18px; padding: 0 18px; }
+.fc-faq__item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; font: 600 16px/22px var(--font-sans); }
+.fc-faq__item summary::-webkit-details-marker { display: none; }
+.fc-faq__item summary svg { flex: none; color: var(--text-3); transition: transform var(--dur-base) var(--ease-out); }
+.fc-faq__item[open] summary svg { transform: rotate(180deg); }
+.fc-faq__item p { margin: 0 0 16px; font: 400 15px/24px var(--font-sans); color: var(--text-2); }
+
+.fc-land__cta { display: grid; gap: 14px; justify-items: center; text-align: center; padding: 8px 0; }
+.fc-land__cta .fc-land__title { max-width: 560px; }
+
+.fc-footer { border-top: 1px solid var(--separator); margin-top: 8px; padding: 28px 0 8px; display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; color: var(--text-3); font: 400 14px/20px var(--font-sans); }
+.fc-footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.fc-footer a { color: var(--text-2); }
+
+/* ---- Soft animated background ---------------------------------------------------------
+   Three large, blurred accent glows drifting slowly behind the page. Only transform is animated
+   (compositor-only, no layout or paint cost), they never receive clicks, and anyone who asks the
+   OS for reduced motion gets them standing still. Kept faint on purpose: the brand guide allows
+   one soft wash, not loud gradients. */
+.fc-landwrap { position: relative; isolation: isolate; overflow: clip; }
+.fc-landbg { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: clip; }
+.fc-landbg__glow {
+  position: absolute; border-radius: 50%; will-change: transform;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 40%, transparent), transparent 100%);
+}
+.fc-landbg__glow--a { width: min(70vw, 760px); aspect-ratio: 1; top: -8%; left: -12%; animation: fc-drift-a 34s ease-in-out infinite alternate; }
+.fc-landbg__glow--b { width: min(60vw, 640px); aspect-ratio: 1; top: 28%; right: -14%; opacity: .95; animation: fc-drift-b 42s ease-in-out infinite alternate; }
+.fc-landbg__glow--c { width: min(65vw, 700px); aspect-ratio: 1; bottom: 4%; left: 12%; opacity: .85; animation: fc-drift-c 38s ease-in-out infinite alternate; }
+:root[data-theme="dark"] .fc-landbg__glow { background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 20%, transparent), transparent 100%); }
+@keyframes fc-drift-a { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(14%, 10%, 0) scale(1.15); } }
+@keyframes fc-drift-b { from { transform: translate3d(0, 0, 0) scale(1.1); } to { transform: translate3d(-16%, 12%, 0) scale(0.92); } }
+@keyframes fc-drift-c { from { transform: translate3d(0, 0, 0) scale(0.95); } to { transform: translate3d(18%, -12%, 0) scale(1.12); } }
+@media (prefers-reduced-motion: reduce) { .fc-landbg__glow { animation: none; } }

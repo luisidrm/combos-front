@@ -1,0 +1,219 @@
+/* UI primitives from the design handoff (design-system/components). Class-based so hover/press/focus
+   need no JS state and render identically on the server. */
+
+.fc-glass {
+  background: var(--surface-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+.fc-photo {
+  background: repeating-linear-gradient(135deg, var(--green-100) 0 10px, var(--green-50) 10px 20px);
+  display: flex;
+  align-items: flex-end;
+  color: var(--green-800);
+  font: 500 10px/1 var(--font-mono);
+  padding: 6px;
+  overflow: hidden;
+}
+[data-theme="dark"] .fc-photo {
+  background: repeating-linear-gradient(135deg, #1c2a21 0 10px, #16211a 10px 20px);
+  color: var(--green-300);
+}
+
+/* ---- Button ---------------------------------------------------------- */
+.fc-btn {
+  --h: 44px; --px: 18px; --fs: 15px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: var(--h); padding: 0 var(--px); border-radius: var(--radius-pill); border: none;
+  font: 600 var(--fs)/1 var(--font-sans); letter-spacing: -0.01em; white-space: nowrap; cursor: pointer;
+  background: var(--bg); color: var(--fg); box-shadow: var(--sh, none);
+  transition: background var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-spring);
+}
+.fc-btn:hover { background: var(--bg-hover); }
+.fc-btn:active { background: var(--bg-press); transform: scale(var(--press-scale)); box-shadow: none; }
+.fc-btn:disabled { background: var(--fill-1); color: var(--text-disabled); box-shadow: none; cursor: default; transform: none; }
+.fc-btn--sm { --h: 32px; --px: 12px; --fs: 14px; }
+.fc-btn--lg { --h: 52px; --px: 22px; --fs: 16px; }
+.fc-btn--block { display: flex; width: 100%; }
+.fc-btn--primary { --bg: var(--accent); --bg-hover: var(--accent-hover); --bg-press: var(--accent-press); --fg: var(--on-accent); --sh: var(--shadow-accent); }
+.fc-btn--secondary { --bg: var(--accent-soft); --bg-hover: var(--green-100); --bg-press: var(--green-200); --fg: var(--accent-text); }
+.fc-btn--tinted { --bg: var(--fill-1); --bg-hover: var(--fill-2); --bg-press: var(--fill-3); --fg: var(--text-1); }
+.fc-btn--plain { --bg: transparent; --bg-hover: var(--fill-1); --bg-press: var(--fill-2); --fg: var(--accent-text); }
+.fc-btn--destructive { --bg: var(--danger-soft); --bg-hover: var(--danger-soft); --bg-press: var(--danger-soft); --fg: var(--danger-text); }
+.fc-btn--glass {
+  --bg: var(--surface-glass); --bg-hover: var(--surface-glass-strong); --bg-press: var(--surface-glass-strong); --fg: var(--text-1);
+  border: 1px solid var(--glass-border); box-shadow: var(--shadow-glass);
+  -webkit-backdrop-filter: var(--blur-glass); backdrop-filter: var(--blur-glass);
+}
+.fc-spin { width: 1em; height: 1em; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: fc-spin .8s linear infinite; }
+@keyframes fc-spin { to { transform: rotate(360deg); } }
+
+/* ---- IconButton ------------------------------------------------------ */
+.fc-iconbtn {
+  position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; padding: 0;
+  width: var(--s, 40px); height: var(--s, 40px); border-radius: 50%; border: none; cursor: pointer;
+  background: var(--bg); color: var(--fg);
+  transition: background var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-spring);
+}
+.fc-iconbtn:hover { background: var(--bg-hover); }
+.fc-iconbtn:active { transform: scale(.92); }
+.fc-iconbtn:disabled { color: var(--text-disabled); cursor: default; }
+.fc-iconbtn--fill { --bg: var(--fill-1); --bg-hover: var(--fill-2); --fg: var(--text-1); }
+.fc-iconbtn--plain { --bg: transparent; --bg-hover: var(--fill-1); --fg: var(--text-1); }
+.fc-iconbtn--primary { --bg: var(--accent); --bg-hover: var(--accent-hover); --fg: var(--on-accent); }
+.fc-iconbtn--glass {
+  --bg: var(--surface-glass); --bg-hover: var(--surface-glass-strong); --fg: var(--text-1);
+  border: 1px solid var(--glass-border); box-shadow: var(--shadow-glass);
+  -webkit-backdrop-filter: var(--blur-glass); backdrop-filter: var(--blur-glass);
+}
+.fc-iconbtn__badge {
+  position: absolute; top: -2px; right: -2px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
+  background: var(--accent); color: var(--on-accent); font: 700 11px/18px var(--font-sans); text-align: center;
+  box-shadow: 0 0 0 2px var(--bg-app);
+}
+
+/* ---- Card ------------------------------------------------------------ */
+.fc-card {
+  border-radius: var(--radius-lg); padding: 16px; background: var(--surface-card);
+  border: 1px solid var(--separator); box-shadow: var(--shadow-sm);
+}
+.fc-card--glass {
+  background: var(--surface-glass); border: 1px solid var(--glass-border); box-shadow: var(--shadow-glass);
+  -webkit-backdrop-filter: var(--blur-glass); backdrop-filter: var(--blur-glass);
+}
+.fc-card--grouped { background: var(--fill-1); box-shadow: none; }
+
+/* ---- Badge ----------------------------------------------------------- */
+.fc-badge {
+  display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: var(--radius-pill);
+  font: 600 12px/1 var(--font-sans); white-space: nowrap; background: var(--bg); color: var(--fg);
+}
+.fc-badge--sm { height: 20px; padding: 0 8px; font-size: 11px; }
+.fc-badge__dot { width: 6px; height: 6px; border-radius: 3px; background: currentColor; }
+.fc-badge--neutral { --bg: var(--fill-1); --fg: var(--text-2); }
+.fc-badge--success { --bg: var(--success-soft); --fg: var(--success-text); }
+.fc-badge--info { --bg: var(--info-soft); --fg: var(--info-text); }
+.fc-badge--warning { --bg: var(--warning-soft); --fg: var(--warning-text); }
+.fc-badge--danger { --bg: var(--danger-soft); --fg: var(--danger-text); }
+.fc-badge--accent { --bg: var(--accent); --fg: var(--on-accent); }
+
+/* ---- Stepper --------------------------------------------------------- */
+.fc-stepper { display: inline-flex; align-items: center; gap: 4px; padding: 3px; border-radius: var(--radius-pill); background: var(--fill-1); }
+.fc-stepper button {
+  --d: 34px; width: var(--d); height: var(--d); border-radius: 50%; border: none; padding: 0; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--surface-raised); box-shadow: var(--shadow-sm); color: var(--text-1);
+}
+.fc-stepper--sm button { --d: 28px; }
+.fc-stepper button:disabled { color: var(--text-disabled); cursor: default; }
+.fc-stepper__value { min-width: 26px; text-align: center; font: 600 15px/1 var(--font-sans); font-variant-numeric: tabular-nums; }
+
+/* ---- TextField ------------------------------------------------------- */
+.fc-field { display: grid; gap: 6px; }
+.fc-field__label { font: 500 13px/18px var(--font-sans); color: var(--text-2); padding-left: 4px; }
+.fc-field__box {
+  display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; border-radius: var(--radius-md);
+  background: var(--surface-card); border: 1px solid var(--border-1); color: var(--text-3);
+  transition: box-shadow var(--dur-fast) var(--ease-out), border-color var(--dur-fast);
+}
+.fc-field__box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--focus-ring); }
+.fc-field--error .fc-field__box { border-color: var(--danger); }
+.fc-field--error .fc-field__box:focus-within { box-shadow: 0 0 0 4px var(--danger-soft); }
+.fc-field__input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; padding: 0; font: 400 16px/22px var(--font-sans); color: var(--text-1); }
+.fc-field__hint { font: 400 12px/16px var(--font-sans); color: var(--text-3); padding-left: 4px; }
+.fc-field--error .fc-field__hint { color: var(--danger-text); }
+
+/* ---- Chip (category filter) ------------------------------------------ */
+.fc-chip {
+  display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; flex: none; border-radius: 999px;
+  cursor: pointer; white-space: nowrap; font: 500 14px/1 var(--font-sans);
+  border: 1px solid var(--border-1); background: var(--surface-card); color: var(--text-1);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.fc-chip:hover { background: var(--fill-1); }
+.fc-chip[aria-pressed="true"] { border-color: transparent; background: var(--accent); color: var(--on-accent); }
+
+/* ---- SegmentedControl (size sm) -------------------------------------- */
+.fc-seg { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding: 3px; border-radius: var(--radius-pill); background: var(--fill-1); position: relative; }
+.fc-seg__thumb {
+  position: absolute; top: 3px; bottom: 3px; border-radius: var(--radius-pill); background: var(--surface-raised); box-shadow: var(--shadow-md);
+  width: calc((100% - 6px) / var(--n)); left: calc(3px + var(--i) * (100% - 6px) / var(--n));
+  transition: left var(--dur-slow) var(--ease-spring);
+}
+.fc-seg button { position: relative; min-width: 48px; height: 26px; padding: 0 12px; border: none; background: transparent; cursor: pointer; font: 500 13px/1 var(--font-sans); color: var(--text-2); }
+.fc-seg button[aria-selected="true"] { font-weight: 600; color: var(--text-1); }
+
+.fc-seg--md button { height: 32px; font-size: 14px; }
+.fc-seg--block { display: grid; width: 100%; }
+
+/* ---- Focus (keyboard) ------------------------------------------------ */
+.fc-btn:focus-visible, .fc-iconbtn:focus-visible, .fc-chip:focus-visible, .fc-stepper button:focus-visible, .fc-seg button:focus-visible {
+  outline: none; box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+/* ---- List / ListRow (inset grouped list) ------------------------------ */
+.fc-list { display: grid; gap: 6px; }
+.fc-list__header { padding: 0 16px; font: 600 12px/16px var(--font-sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
+.fc-list__body { background: var(--surface-card); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--separator); }
+.fc-list__body > * + * { border-top: 1px solid var(--separator); }
+.fc-row { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 8px 16px; }
+.fc-row__tile { flex: none; width: 32px; height: 32px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; background: var(--tile, var(--accent)); color: #fff; }
+.fc-row__body { flex: 1; min-width: 0; }
+.fc-row__title { font: 500 16px/22px var(--font-sans); }
+.fc-row__sub { font: 400 13px/18px var(--font-sans); color: var(--text-3); }
+.fc-row__value { font: 400 15px/20px var(--font-sans); color: var(--text-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---- Alert (confirm dialog) ------------------------------------------- */
+.fc-alert { border: none; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; overflow: visible; color: var(--text-1); }
+.fc-alert::backdrop { background: var(--scrim); }
+.fc-alert[open] { animation: fc-alert-in var(--dur-slow) var(--ease-spring); }
+@keyframes fc-alert-in { from { transform: scale(1.08); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.fc-alert__box {
+  width: min(300px, calc(100vw - 48px)); padding: 22px 18px 16px; text-align: center; border-radius: var(--radius-xl);
+  background: var(--surface-glass-strong); -webkit-backdrop-filter: var(--blur-glass-heavy); backdrop-filter: var(--blur-glass-heavy);
+  border: 1px solid var(--glass-border); box-shadow: var(--shadow-lg);
+}
+.fc-alert__title { font: 600 17px/22px var(--font-sans); }
+.fc-alert__msg { margin-top: 6px; font: 400 14px/20px var(--font-sans); color: var(--text-2); text-wrap: pretty; }
+.fc-alert__actions { display: flex; gap: 8px; margin-top: 18px; }
+.fc-alert__actions .fc-btn { flex: 1; }
+.fc-btn--danger { --bg: var(--danger); --bg-hover: var(--red-600); --bg-press: var(--red-600); --fg: #fff; }
+
+.fc-row--link { color: inherit; transition: background var(--dur-fast); }
+.fc-row--link:hover { background: var(--fill-1); color: inherit; text-decoration: none; }
+.fc-row__chev { flex: none; color: var(--text-3); }
+.fc-field__input:is(select) { appearance: none; cursor: pointer; min-height: 46px; }
+
+/* ---- Toggle ------------------------------------------------------------- */
+.fc-toggle { flex: none; width: 52px; height: 32px; border-radius: 16px; border: none; padding: 2px; cursor: pointer; background: var(--fill-3); transition: background var(--dur-base) var(--ease-out); }
+.fc-toggle[aria-checked="true"] { background: var(--accent); }
+.fc-toggle:disabled { opacity: .45; cursor: default; }
+.fc-toggle__knob { display: block; width: 28px; height: 28px; border-radius: 14px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.18); transition: transform var(--dur-slow) var(--ease-spring); }
+.fc-toggle[aria-checked="true"] .fc-toggle__knob { transform: translateX(20px); }
+.fc-toggle:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--focus-ring); }
+
+/* ---- Modal (sheet on phones, centered dialog from 760px) ----------------- */
+.fc-modal { border: none; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; overflow: visible; color: var(--text-1); margin: auto 0 0; width: 100%; }
+.fc-modal::backdrop { background: var(--scrim); }
+.fc-modal[open] { animation: fc-sheet-in var(--dur-slow) var(--ease-spring); }
+@keyframes fc-sheet-in { from { transform: translateY(105%); } to { transform: none; } }
+.fc-modal__box {
+  margin: 8px; max-height: calc(100vh - 48px); display: flex; flex-direction: column; border-radius: var(--radius-2xl);
+  background: var(--surface-glass-strong); -webkit-backdrop-filter: var(--blur-glass-heavy); backdrop-filter: var(--blur-glass-heavy);
+  border: 1px solid var(--glass-border); box-shadow: var(--shadow-lg);
+}
+.fc-modal__head { display: flex; align-items: center; gap: 8px; padding: 14px 12px 6px 20px; }
+.fc-modal__title { flex: 1; font: 600 17px/22px var(--font-sans); letter-spacing: -0.01em; }
+.fc-modal__body { overflow: auto; padding: 4px 20px 16px; }
+.fc-modal__foot { padding: 0 16px 16px; }
+@media (min-width: 760px) {
+  .fc-modal { margin: auto; width: auto; }
+  .fc-modal[open] { animation: fc-alert-in var(--dur-slow) var(--ease-spring); }
+  .fc-modal__box { width: 540px; max-width: calc(100vw - 48px); max-height: 90vh; margin: 0; border-radius: var(--radius-xl); }
+  .fc-modal__head { padding: 18px 20px 10px 24px; }
+  .fc-modal__title { font-size: 19px; line-height: 24px; letter-spacing: -0.015em; }
+  .fc-modal__body { padding: 6px 24px 18px; }
+  .fc-modal__foot { padding: 0 24px 22px; }
+}
